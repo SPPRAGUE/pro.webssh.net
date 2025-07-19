@@ -1,0 +1,8 @@
+:root {
+    --md-primary-fg-color: #129cf3 !important;
+}
+
+.md-typeset .md-button {
+    padding: 2px 10px !important;
+    margin-bottom: 5px !important;
+}
