@@ -3,6 +3,8 @@ title: FAQ
 ---
 
 # FAQ - Frequently Asked Questions
+:sparkles: <a href="#" onclick="javascript:showDocumentationAssistant(); return false;">AI Documentation Assistant</a> is at your disposal - ask away with any WebSSH questions that come to mind!
+
 ??? abstract "Does WebSSH support ZMODEM, YMODEM or XMODEM transfers?"
     Unfortunately, WebSSH does not support ZMODEM, YMODEM or XMODEM transfers.
     A GitHub issue could be find to track this feature request : [#761](https://github.com/isontheline/pro.webssh.net/issues/761)
@@ -57,3 +59,6 @@ title: FAQ
 
 ??? abstract "What are snippets?"
     Snippets are reusable pieces of code / commands / scripts that can be quickly inserted into your terminal session. They help you save time by allowing you to reuse commonly used commands without having to type them out each time.
+
+??? abstract "Does the backspace key could repeat when held down?"
+    No, the backspace key does not repeat when held down in WebSSH. This is a limitation of the current implementation.
