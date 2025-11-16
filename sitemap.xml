@@ -172,7 +172,7 @@
     <loc>https://webssh.net/documentation/frequently-asked-questions/</loc>
 
     
-    <lastmod>2025-11-15T15:11:26+00:00</lastmod>
+    <lastmod>2025-11-16T17:35:27+00:00</lastmod>
 
       
       
@@ -220,7 +220,7 @@
     <loc>https://webssh.net/documentation/pricing/</loc>
 
     
-    <lastmod>2025-07-18T11:30:46+00:00</lastmod>
+    <lastmod>2025-11-16T17:22:57+00:00</lastmod>
 
       
       
@@ -234,7 +234,7 @@
         
 
         
-          <changefreq>monthly</changefreq>
+          <changefreq>daily</changefreq>
         
       
     
@@ -1651,6 +1651,30 @@
 
         
           <changefreq>yearly</changefreq>
+        
+      
+    
+  </url>
+  
+  <url>
+    <loc>https://webssh.net/documentation/help/howtos/snippets/</loc>
+
+    
+    <lastmod>2025-11-16T14:30:35+00:00</lastmod>
+
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+
+        
+          <changefreq>daily</changefreq>
         
       
     
