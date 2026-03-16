@@ -172,7 +172,7 @@
     <loc>https://webssh.net/documentation/pricing/</loc>
 
     
-    <lastmod>2026-01-03T21:49:36+00:00</lastmod>
+    <lastmod>2026-03-15T20:35:54+00:00</lastmod>
 
       
       
@@ -1027,6 +1027,126 @@
 
         
           <changefreq>yearly</changefreq>
+        
+      
+    
+  </url>
+  
+  <url>
+    <loc>https://webssh.net/documentation/guides/homelab-ssh-tunnel-ios/</loc>
+
+    
+    <lastmod>2026-03-15T21:11:45+00:00</lastmod>
+
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+
+        
+          <changefreq>daily</changefreq>
+        
+      
+    
+  </url>
+  
+  <url>
+    <loc>https://webssh.net/documentation/guides/no-subscription-ssh-client-ios/</loc>
+
+    
+    <lastmod>2026-03-15T21:11:45+00:00</lastmod>
+
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+
+        
+          <changefreq>daily</changefreq>
+        
+      
+    
+  </url>
+  
+  <url>
+    <loc>https://webssh.net/documentation/guides/raspberry-pi-ssh-ios/</loc>
+
+    
+    <lastmod>2026-03-15T21:11:45+00:00</lastmod>
+
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+
+        
+          <changefreq>daily</changefreq>
+        
+      
+    
+  </url>
+  
+  <url>
+    <loc>https://webssh.net/documentation/guides/sftp-file-transfer-iphone/</loc>
+
+    
+    <lastmod>2026-03-15T21:11:45+00:00</lastmod>
+
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+
+        
+          <changefreq>daily</changefreq>
+        
+      
+    
+  </url>
+  
+  <url>
+    <loc>https://webssh.net/documentation/guides/synology-ssh-iphone-ipad/</loc>
+
+    
+    <lastmod>2026-03-15T21:11:45+00:00</lastmod>
+
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+
+        
+          <changefreq>daily</changefreq>
         
       
     
