@@ -2439,6 +2439,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#system-items" class="md-nav__link">
+    System items
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#built-in-items" class="md-nav__link">
     Built-in items
   </a>
@@ -2462,6 +2469,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appearance" class="md-nav__link">
+    Appearance
+  </a>
   
 </li>
       
@@ -3528,6 +3542,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#system-items" class="md-nav__link">
+    System items
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#built-in-items" class="md-nav__link">
     Built-in items
   </a>
@@ -3551,6 +3572,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appearance" class="md-nav__link">
+    Appearance
+  </a>
   
 </li>
       
@@ -3617,13 +3645,10 @@
 <h2 id="anatomy-of-the-state-bar">Anatomy of the State Bar</h2>
 <p>From left to right:</p>
 <ol>
-<li><strong>Menu button</strong> (waveform icon): opens the State Bar menu (Refresh, Pause / Resume, hide the bar, Help, Restart, Settings).</li>
-<li><strong>Connection item</strong> (since 32.9): icon only when everything is fine, icon + label when the state degrades (orange for a warning, red for an error, for example a mosh session waiting for the server or a lost SSH connection). Tap it to open the connection information sheet (key exchange, cipher, host key fingerprint, jump hosts, mosh transport…).</li>
-<li><strong>Progress item</strong> (since 32.10): only visible while a job reports its progress through the <a href="/documentation/terminal-progress-bar/"><code>OSC 9;4</code> escape sequence</a>.</li>
-<li><strong>Recording button</strong>: start / stop a session recording, add markers, review or list recordings. It can be hidden from the settings (see below).</li>
-<li><strong>Your items</strong>: the items you composed in the settings, scrolling horizontally when they do not fit. On macOS and iPadOS with a pointer, the item under the cursor is highlighted. An item can be tinted (orange, red, green), carry a badge, a progress ring or a sparkline.</li>
+<li><strong>Menu button</strong> (waveform icon): opens the State Bar menu (Refresh, Pause / Resume, hide the bar, Help, Restart, Customize). It is the only fixed element: it always sits on the left and cannot be removed.</li>
+<li><strong>Your list of items</strong>, in the order you chose, scrolling horizontally when they do not fit: <a href="#system-items">system items</a>, <a href="#built-in-items">built-in items</a>, <a href="#layout-items">layout items</a> and <a href="#your-own-items">your own items</a>. On macOS and iPadOS with a pointer, the item under the cursor is highlighted. An item can be tinted (orange, red, green), carry a badge, a progress ring or a sparkline, and has its own <a href="#appearance">appearance</a>.</li>
 </ol>
-<p>The first four are fixed: they cannot be moved or removed.</p>
+<p>Until 32.10 the connection information, the progress and the recording button were fixed next to the menu button. They are now ordinary items: move them, restyle them or remove them.</p>
 <h2 id="show-or-hide-the-state-bar">Show or hide the State Bar</h2>
 <p>The State Bar is enabled by default. Three levels control it:</p>
 <ul>
@@ -3631,18 +3656,18 @@
 <li><strong>Per connection</strong>: the <em>State Bar</em> option in the terminal section of the connection form: <strong>Inherit</strong> (use the global setting), <strong>Enabled</strong>, <strong>Hidden</strong> or <strong>Disabled</strong>.</li>
 <li><strong>In the terminal</strong>: the <em>State Bar</em> entry of the terminal menu (⋯) toggles the bar for the current session, and the bar's own menu can hide it too.</li>
 </ul>
-<p>Two more settings live next to <em>State Bar Strategy</em>:</p>
+<p>One more setting lives next to <em>State Bar Strategy</em>:</p>
 <ul>
 <li><strong>State Bar Background Color</strong>: use the terminal selection color (default) or the terminal background color. The foreground color is adjusted automatically when the contrast is not sufficient.</li>
-<li><strong>Recording Button</strong>: show or hide the fixed recording button.</li>
 </ul>
+<p>The former <em>Recording Button</em> setting is gone: keep or remove the <strong>Recording</strong> item in your list instead.</p>
 <div class="admonition warning">
 <p class="admonition-title">Not available for every session</p>
 <p>The State Bar is not available when the session goes through a jump host ("Connect Through"), nor on Telnet sessions. It is available on SSH and mosh sessions.</p>
 </div>
 <h2 id="compose-the-state-bar">Compose the State Bar</h2>
 <ol>
-<li>Go to Settings → Terminal → State Bar (or tap Settings in the State Bar menu of any terminal).</li>
+<li>Go to Settings → Terminal → State Bar (or tap Customize in the State Bar menu of any terminal).</li>
 <li>Use the add button (top right):<ul>
 <li><strong>Add</strong>: create your own item, written in JavaScript (see below).</li>
 <li><strong>Built-in Items</strong>: pick an item provided by WebSSH (see below).</li>
@@ -3650,11 +3675,43 @@
 </li>
 <li>Drag the handles to reorder the items. Long press (or right click) an item to delete it.</li>
 </ol>
+<p>The <strong>⋯</strong> menu offers <strong>Export Items…</strong> and <strong>Import Items…</strong>, to save the whole list in a JSON file and load it back, on another account or to share a setup. The export contains every item in order with its appearance and settings; built-in items are stored as references, your own items with their script. An import first checks the file, then asks for a confirmation since it <strong>replaces all your current items</strong>. Only import files you trust: scripts can run commands on your servers. Built-in items unknown to your version of WebSSH are skipped.</p>
+<p>The same menu offers <strong>Reset to Defaults</strong>: after a confirmation, every saved item is deleted, your own scripts included, and the bar gets its original items back. As the list is synchronized through iCloud, the reset applies to your other devices too.</p>
+<p>A <strong>preview of the bar</strong> sits above the list and follows every change: order, appearance, separators and flexible spaces are exact. Built-in items show their real value when a session is open (read locally, nothing is sent to the server), your own items show their icon and name since scripts are not run here (use <a href="#test-your-item">Test</a> for that), and the Progress item is shown with a sample value so you can see where it will appear. The preview uses the theme of the open session, and scrolls sideways when the bar is wider than the screen. To find which element of the bar a row stands for, on iPhone and iPad tap the <strong>locate</strong> button (scope icon) of the row, or <em>Locate in the Bar</em> in its context menu: the preview scrolls to the item and flashes it, which is especially handy for spaces, flexible spaces and separators. On the Mac there is no button: simply hovering a row highlights its item, which also works with a pointer on iPad.</p>
 <p>Changes are saved immediately and synchronized through iCloud like the rest of your data. When the settings were opened from a State Bar menu, that bar is rebuilt when you leave them; other open terminals pick up the changes with Restart in their State Bar menu.</p>
 <div class="admonition tip">
 <p class="admonition-title">First launch</p>
-<p>Until you compose your own list, the State Bar shows three built-in items: <strong>Connection</strong>, a <strong>Flexible Space</strong> and <strong>Terminal size</strong>, which puts the terminal size on the right edge.</p>
+<p>Until you compose your own list, the State Bar shows <strong>Connection info</strong>, <strong>Progress</strong> and <strong>Recording</strong>, each followed by a <strong>Separator</strong>, then <strong>Connection name</strong>, a <strong>Flexible Space</strong> and <strong>Terminal size</strong>, which puts the terminal size on the right edge. If you already had a list before 32.10, the three system items and their separators were added once at its head.</p>
 </div>
+<h2 id="system-items">System items</h2>
+<p>Since WebSSH 32.10, the three elements that used to be fixed are items of the <em>Built-in Items</em> picker, listed first among the other built-in items. Their content is driven by the terminal, not computed every 3 seconds. Each can be added once.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Shows</th>
+<th>Tap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connection info (since 32.9)</td>
+<td>Icon only when everything is fine, icon + label when the state degrades (orange for a warning, red for an error, for example a mosh session waiting for the server or a lost SSH connection)</td>
+<td>Opens the connection information sheet (key exchange, cipher, host key fingerprint, jump hosts, mosh transport…)</td>
+</tr>
+<tr>
+<td>Progress</td>
+<td>Only visible while a job reports its progress through the <a href="/documentation/terminal-progress-bar/"><code>OSC 9;4</code> escape sequence</a>: ring + percentage, red triangle on error, orange pause icon, spinner when indeterminate, green check when the job completes</td>
+<td>None. Its context menu clears a stuck indicator</td>
+</tr>
+<tr>
+<td>Recording</td>
+<td>Record icon, red while recording</td>
+<td>Start / stop a session recording, add markers, review or list recordings</td>
+</tr>
+</tbody>
+</table>
+<p>Removing <em>Connection info</em> does not remove the feature: the sheet stays available from the terminal menu (⋯).</p>
 <h2 id="built-in-items">Built-in items</h2>
 <p>Since WebSSH 32.10, built-in items are provided and computed by WebSSH itself. They cannot be edited (a lock is shown in the list) but they can be reordered and deleted, and they are updated automatically with the app: no JavaScript involved.</p>
 <table>
@@ -3667,7 +3724,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Connection</td>
+<td>Connection name</td>
 <td>The connection icon and name (or host when the name is empty)</td>
 <td>All sessions</td>
 </tr>
@@ -3720,18 +3777,27 @@
 </table>
 <p>An item that does not apply to the current session is simply hidden. Each built-in item can be added only once, except Date &amp; Time and Ephemeris.</p>
 <h3 id="built-in-item-settings">Built-in item settings</h3>
-<p>Built-in items with settings (Date &amp; Time, Ephemeris, Round-trip time) show a chevron instead of the lock in the list. Tap the row (or Edit in its context menu) to open their settings: a live preview at the top, the <em>Graph</em> setting for numeric items, then the item's own parameters. Settings are saved when you leave the sheet and synchronized with the rest of the item.</p>
+<p>Tap a built-in item in the list (or Edit in its context menu) to open its settings: a live preview at the top when the item has parameters (Date &amp; Time, Ephemeris), its <a href="#appearance">appearance</a>, the <em>Graph</em> setting for numeric items (Round-trip time), then the item's own parameters. Settings are saved when you leave the sheet and synchronized with the rest of the item.</p>
 <h3 id="layout-items">Layout items</h3>
-<p>Two built-in items only affect the layout and can be added as many times as you want:</p>
+<p>Three built-in items only affect the layout and can be added as many times as you want:</p>
 <ul>
+<li><strong>Separator</strong>: a thin vertical line, to delimit groups of items. Like in a toolbar, separators that end up side by side are merged (for example around the Progress item while no job is running), and a separator at the very start or end of the bar is not drawn. Tap a separator in the list to choose its <strong>height</strong>: short (10 % of the bar), medium (50 %, the default) or the full height of the bar.</li>
 <li><strong>Space</strong>: a small fixed gap between two items.</li>
 <li><strong>Flexible Space</strong>: pushes the items on either side of it apart. One flexible space aligns everything after it to the right edge; two of them center what stands between them. When the items do not fit in the bar, flexible spaces collapse and the bar scrolls as usual.</li>
 </ul>
+<h2 id="appearance">Appearance</h2>
+<p>Since WebSSH 32.10, every item (system, built-in or your own) has three appearance settings. For your own items they are in the item editor; for the others, tap the row in the list to open their settings.</p>
+<ul>
+<li><strong>Style</strong>: <strong>Plain</strong> (content only, the default), <strong>Bordered</strong> (thin rounded outline) or <strong>Filled</strong> (light rounded background). A <code>tint</code> returned by a script still colours every style. To delimit items, use the <a href="#layout-items">Separator</a> layout item.</li>
+<li><strong>Content</strong>: <strong>Icon and label</strong>, <strong>Icon only</strong> or <strong>Label only</strong>, to compact a busy bar without touching the script. A progress ring or a badge stays visible in <em>Label only</em>, as they live in the icon slot.</li>
+<li><strong>Maximum label width</strong>: truncates a long label with … beyond 80, 120, 160 or 240 points. Tapping the item still copies the full label.</li>
+</ul>
+<p>As every non-layout item now has settings, they show a chevron in the list, and so does the Separator; Space and Flexible Space keep the lock.</p>
 <h2 id="your-own-items">Your own items</h2>
 <p>Since WebSSH 29.3 you can write your own items. An item is defined by:</p>
 <ul>
 <li><strong>Name</strong>: only used to identify the item in the settings (and as the title of the menu shown when you tap the item).</li>
-<li><strong>Tags</strong>: link the item to one or more connections. Read more about <a href="/documentation/help/howtos/link-connections-using-tags/">WebSSH Tags</a>. Leave empty (or <code>*</code>) to show the item on every connection.</li>
+<li><strong>Tags</strong>: link the item to one or more connections. Read more about <a href="/documentation/help/howtos/link-connections-using-tags/">WebSSH Tags</a>. Leave empty (or <code>*</code>) to show the item on every connection. The default items only exist while your list is empty: once you have a list, a connection that matches none of your tagged items shows just the items that apply to it (system and built-in items always do).</li>
 <li><strong>Icon</strong>: the <a href="https://developer.apple.com/sf-symbols/">SF Symbol</a> displayed before the label. The script can change it at every run. The icon row shows the symbol name, and in the icon picker a long press (or right click) on any symbol shows its name with a <em>Copy name</em> action: handy to find the names a script can return in <code>icon</code>, no Mac needed. The picker's list mode shows all the names.</li>
 <li><strong>Graph</strong>: off by default. See <a href="#graph">below</a>.</li>
 <li><strong>JavaScript</strong>: the code executed to compute the item. See the <a href="javascript-api/">JavaScript API</a> and the <a href="examples/">examples</a>.</li>
@@ -3771,7 +3837,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 17, 2026 20:04:06 UTC">September 17, 2026</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 13:16:11 UTC">September 19, 2026</span>
       
     
   </small>
